@@ -1,44 +1,44 @@
 import React, {useState} from "react";
-import "./styles.css";
+import "./styles.scss";
 import {InputTodo} from './components/InputTodo';
 import {IncompleteTodos} from './components/IncompleteTodos';
 import {CompleteTodos} from './components/CompleteTodos';
 
  const App = () => {
-  const [todoText, setTodoText]= useState(['']);
-  const [incompleteTodos, setIncompleteTodos] = useState([]);
-  const [completeTodos,setCompleteTodos] = useState([]);
+  const [todoText, setTodoText]= useState<string>('');
+  const [incompleteTodos, setIncompleteTodos] = useState<string[]>([]);
+  const [completeTodos, setCompleteTodos] = useState<string[]>([]);
 
-  const onChangeTodoText = (event) => setTodoText(event.target.value)
+  const onChangeTodoText = (event:any) => setTodoText(event.target.value)
 
   const onClickAdd = () => {
     if (todoText === "") return;
-    const newTodos = [...incompleteTodos, todoText];
+    const newTodos : string[] = [...incompleteTodos, todoText];
     setIncompleteTodos(newTodos);
     setTodoText("");
   };
 
-  const onClickDelete = (index) => {
-    const newTodos = [...incompleteTodos];
+  const onClickDelete = (index:number) => {
+    const newTodos: string[] = [...incompleteTodos];
     newTodos.splice(index, 1);
     setIncompleteTodos(newTodos);
   }
 
-  const onClickComplete = (index) => {
-    const newIncompleteTodos = [...incompleteTodos];
+  const onClickComplete = (index:number) => {
+    const newIncompleteTodos: string[] = [...incompleteTodos];
     newIncompleteTodos.splice(index, 1);
 
-    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+    const newCompleteTodos: string[] = [...completeTodos, incompleteTodos[index]];
 
     setIncompleteTodos(newIncompleteTodos);
     setCompleteTodos(newCompleteTodos);
   };
 
-  const onClickBack = (index) => {
-    const newCompleteTodos = [...completeTodos];
+  const onClickBack = (index:number) => {
+    const newCompleteTodos: string[] = [...completeTodos];
     newCompleteTodos.splice(index, 1);
 
-    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
+    const newIncompleteTodos: string[] = [...incompleteTodos, completeTodos[index]];
 
     setIncompleteTodos(newIncompleteTodos);
     setCompleteTodos(newCompleteTodos);

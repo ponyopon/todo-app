@@ -1,4 +1,5 @@
 import React from 'react';
+import { TodoType } from '../types';
 
 const style = {
   backgroundColor: '#c1ffff',
@@ -9,7 +10,7 @@ const style = {
   margin: '8px'
 }
 
-export const InputTodo = ({todoText, onChange, onClick, disabled}) => {
+export const InputTodo = ({todoText, onChange, onClick, disabled}:TodoType) => {
     return (
         <div style={style}>
       <input disabled={disabled} placeholder="Todoを入力" value={todoText} onChange={onChange} />
